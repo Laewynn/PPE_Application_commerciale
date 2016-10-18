@@ -29,14 +29,6 @@ class Client extends model {
 
 	/**
     * Fonction qui sert à déclarer le constructeur de la classe Client
-    * @param $idclient =  l'identifiant du client
-    * @param $nomclient = le nom du client  
-    * @param $prenomclient = le prénom du client
-    * @param $adresseclient = l'adresse du client
-    * @param $cpclient = le code postal du client
-    * @param $villeclient = la ville du client
-    * @param $telephoneclient = le téléphone du client
-    * @param $mailcient = l'email du client
     *
     * @author MARCHAND Laëtitia
     * @date 04/10/16

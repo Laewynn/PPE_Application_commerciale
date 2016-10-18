@@ -14,7 +14,7 @@
 	* @author Laëtitia Marchand <laetitiamarchand35@gmail.com>
 	*/
 require_once("classeMere.php");
-public class Produit extends model{
+class Produit extends model{
 	private $idproduit;
 	private $nomproduit;
 	private $descriptionproduit;
@@ -30,14 +30,14 @@ public class Produit extends model{
 	* @author MARCHAND Laëtitia
 	* @date 11/10/16
 	*/
-	function __construct($idproduit, $nomproduit, $descriptionproduit, $prixunitaireht, $tva, $qteenstock, $image){
-		$this->idproduit=$idproduit;
-		$this->nomproduit=$nomproduit;
-		$this->descriptionproduit=$descriptionproduit;
-		$this->prixunitaireht=$prixunitaireht;
-		$this->tva=$tva;
-		$this->qteenstock=$qteenstock;
-		$this->image=$image;
+	function __construct(){
+		$this->idproduit='';
+		$this->nomproduit='';
+		$this->descriptionproduit='';
+		$this->prixunitaireht='';
+		$this->tva='';
+		$this->qteenstock='';
+		$this->image='';
 	}
 
 

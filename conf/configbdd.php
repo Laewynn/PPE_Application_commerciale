@@ -7,7 +7,7 @@ define('MY_SGBD','pgsql');
 define('MY_HOSTNAME','localhost');
 
 //nom de la base de donnee
-define('MY_DATABASE','commerciale');
+define('MY_DATABASE','Application_commerciale');
 
 //nom de l'utilisateur
 define('MY_USERNAME','postgres');

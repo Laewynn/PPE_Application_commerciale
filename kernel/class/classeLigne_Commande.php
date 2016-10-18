@@ -30,11 +30,11 @@ public class Ligne_Commande extends model{
 	* @author MARCHAND Laëtitia
 	* @date 11/10/16
 	*/
-	function __construct($numerolignecommande, $qtecommandee, $prixunitaireht, $tva){
-		$this->numerolignecommande=$numerolignecommande;
-		$this->qtecommandee=$qtecommandee;
-		$this->prixunitaireht=$prixunitaireht;
-		$this->tva->$tva;
+	function __construct(){
+		$this->numerolignecommande='';
+		$this->qtecommandee='';
+		$this->prixunitaireht='';
+		$this->tva='';
 	}
 
 

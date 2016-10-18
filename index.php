@@ -21,7 +21,7 @@ require_once ('conf/configbdd.php');
 			$action = 'index';
 		}
 	}else{
-		$controller = 'categories';
+		$controller = 'produits';
 		$action = 'index';
 	}
 	if(isset($pwet[2])){

@@ -25,25 +25,18 @@ class Commande extends model{
  
 	/**
 	* Fonction qui sert à déclarer le constructeur de la classe Commande
-	* @param $idcommande =  l'identifiant de la commande
-	* @param $datecommande = la date de la commmande
-	* @param $datelivraison = la date de livraison de la commande 
-	* @param $adresselivraison = l'adresse de livraison de la commande
-	* @param $cplivraison = le code postal de la livraison pour la commande
-	* @param $villelivraison = la ville de la livraison pour la commande
-	* @param $fraisdeport = les frais de port de la livraison
-	*
+  *
 	* @author MARCHAND Laëtitia
 	* @date 04/10/16
 	*/
-	function __construct($idcommande, $datecommande, $datelivraison, $adresselivraison, $cplivraison, $villelivraison, $fraisdeport) {
-		$this->idcommande=$idcommande;
-		$this->datecommande=$Date;
-		$this->datelivraison=$datelivraison;
-		$this->adresselivraison=$adresselivraison;
-		$this->cplivraison=$cplivraison;
-		$this->villelivraison=$villelivraison;
-		$this->fraisdeport=$fraisdeport;
+	function __construct() {
+		$this->idcommande='';
+		$this->datecommande='';
+		$this->datelivraison='';
+		$this->adresselivraison='';
+		$this->cplivraison='';
+		$this->villelivraison='';
+		$this->fraisdeport='';
 	}
     
 	/**
