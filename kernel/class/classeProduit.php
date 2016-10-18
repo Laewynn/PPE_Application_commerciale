@@ -1,4 +1,18 @@
 <?php
+/**
+* Le fichier PHP fait partie du projet Application Commerciale 
+* Il sert à définir la classe Produit avec son constructeur,
+* ses accesseurs et ses mutateurs.
+* @datedernièremodification : 11 octobre 2016
+* @since 20 septembre 2016
+* @author Laëtitia Marchand <laetitiamarchand35@gmail.com>
+*/
+
+	/**
+	* La classe Ligne_Commande permet de gérer la table ligne_commande du projet Application Commerciale.
+	*
+	* @author Laëtitia Marchand <laetitiamarchand35@gmail.com>
+	*/
 require_once("classeMere.php");
 public class Produit extends model{
 	private $idproduit;
@@ -7,71 +21,188 @@ public class Produit extends model{
 	private $prixunitaireht;
 	private $tva;
 	private $qteenstock;
+	private $image;
 
-	// Constructeur de la classe Produit
-	function __construct($idproduit, $nomproduit, $descriptionproduit, $prixunitaireht, $tva, $qteenstock){
+	
+	/**
+	* Fonction qui sert à déclarer le constructeur de la classe Produit
+	* 
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
+	function __construct($idproduit, $nomproduit, $descriptionproduit, $prixunitaireht, $tva, $qteenstock, $image){
 		$this->idproduit=$idproduit;
 		$this->nomproduit=$nomproduit;
 		$this->descriptionproduit=$descriptionproduit;
 		$this->prixunitaireht=$prixunitaireht;
 		$this->tva=$tva;
 		$this->qteenstock=$qteenstock;
+		$this->image=$image;
 	}
 
-	// Accesseurs et Mutateurs IDProduit
+
+	/**
+	* Fonction qui sert à donner la valeur de l'id du produit
+	* @return $idproduit = l'id du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function getidproduit(){
 		return $this->idproduit;
 	}
 
+	/**
+	* Fonction qui sert à modifier la valeur de l'id du produit
+	* @param $idproduit = le nouvel id du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function setidproduit($idproduit){
 		$this->idproduit=$idproduit;
 	}
 
-	// Accesseurs et Mutateurs du NomProduit
+	
+	/**
+	* Fonction qui sert à donner la valeur du nom du produit
+	* @return $nomproduit = le nom du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function getnomproduit(){
 		return $this->nomproduit;
 	}
 
 
+	/**
+	* Fonction qui sert à modifier la valeur du nom du produit
+	* @param $nomproduit = le nouveau nom du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function setnomproduit($nomproduit){
 		$this->nomproduit=$nomproduit;
 	}
-	// Accesseurs et Mutateurs de la DescriptionProduit
+
+
+	/**
+	* Fonction qui sert à donner la valeur de la description du produit
+	* @return $descriptionproduit = la description du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function getdescriptionproduit(){
 		return $this->descriptionproduit;
 	}
 
 
+	/**
+	* Fonction qui sert à modifier la valeur la description du produit
+	* @param $descriptionroduit = la nouvelle description du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function setdescriptionproduit($descriptionproduit){
 		$this->descriptionproduit=$descriptionproduit;
 	}
 
-	// Accesseurs et Mutateurs du Prix Unitaire HT
+
+	/**
+	* Fonction qui sert à donner la valeur du prix unitaire hors-taxe du produit
+	* @return $prixunitairehht = le prix unitaire hors-taxe du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function getprixunitaireht(){
 		return $this->prixunitaireht;
 	}
 
+
+	/**
+	* Fonction qui sert à modifier la valeur du prix unitiare hors-taxe du produit
+	* @param $prixunitaireht = le nouveau prix unitaire hors-taxe du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function setprixunitaireht($prixunitaireht){
 		$this->prixunitaireht=$prixunitaireht;
 	}
 
-	// Accesseurs et Mutateurs TVA
+	
+	/**
+	* Fonction qui sert à donner la valeur de la TVA du produit
+	* @return $tva = la TVA du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function gettva(){
 		return $this->tva;
 	}
 
+
+	/**
+	* Fonction qui sert à modifier la valeur de la TVA du produit
+	* @param $tva = la nouvelle TVA du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function settva($tva){
 		$this->tva=$tva;
 	}
 
-	// Accesseurs et Mutateurs QteEnStock
+	/**
+	* Fonction qui sert à donner la valeur de la quantité en stock du produit
+	* @return $qteenstock = la quantité en stock du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function getqteenstock(){
 		return $this->qteenstock;
 	}
 
+	/**
+	* Fonction qui sert à modifier la valeur de la quuantité en stock du produit
+	* @param $qteenstock = la nouvelle quantité en stock du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 11/10/16
+	*/
 	function setqteenstock($qteenstock){
 		$this->qteenstock=$qteenstock;
 	}
+
+	/**
+	* Fonction qui sert à donner la valeur de l'image
+	* @return $image = l'image du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 18/10/16
+	*/
+	function getimage(){
+		return $this->image;
 	}
 
-	?>
+
+	/**
+	* Fonction qui sert à modifier la valeur de l'image du produit
+	* @param $image= la nouvelle image du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 18/10/16
+	*/
+	function setimage($image){
+		$this->image=$image;
+	}
+}
+
+?>
