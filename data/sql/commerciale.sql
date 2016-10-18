@@ -41,6 +41,7 @@ CREATE TABLE PRODUIT (
 	TVA int,
 	QteEnStock int,
 	IDCategorie int,
+	Image varchar(100),
 	CONSTRAINT pk_produit PRIMARY KEY (IDProduit),
 	CONSTRAINT fk_produit_categorie FOREIGN KEY (IDCategorie) REFERENCES CATEGORIE (IDCategorie)
 );
