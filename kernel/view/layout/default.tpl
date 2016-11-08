@@ -8,7 +8,7 @@
 <div class="page">
 
 <div class="site">
-<h1>Projet Commerciale</h1>
+<h1>Projet Application Commerciale</h1>
 </div>
 <div class="menu">
 
