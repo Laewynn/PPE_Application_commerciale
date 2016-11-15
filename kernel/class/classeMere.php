@@ -21,7 +21,9 @@ abstract class model {
 	protected $tab;
 	protected $primary;
 	protected $display;
-	protected $arraysys = ['pdo', 'tab', 'arraysys','default','primary','display'];
+	protected $arraysys = ['pdo', 'tab', 'arraysys','default','primary','display', 'autoincrement', 'attributech'];
+	protected $autoincrement;
+	protected $attributech;
 
 
 	/**
@@ -30,12 +32,14 @@ abstract class model {
 	* @author Gwendoline BOISSON
 	* @date 11/10/16
 	*/
-	public function __construct(){
+	public function __construct($tab, $primary, $autoincrement){
 		$this->default = "";
 		$this->pdo = "";
-		$this->tab = "";
-		$this->primary = "";
+		$this->tab = $tab;
+		$this->primary = $primary;
 		$this->display = "";
+		$this->autoincrement= $autoincrement;
+        $this->attributech = array('tab', 'primary','autoincrement','attributech'); // pour ne pas les utilisers les attributs techniques des requêtes
 		
 	}
 
@@ -67,35 +71,39 @@ abstract class model {
     * @date 07/10/16
     */
 	//CRUD
-	public function created(){
-		$this->connect();
-		$tab = $this->tab;
+	public function create(){
+		$proprietes="";
+		$valeurs="";
+		//print_r($this);
 		
-		$req = "INSERT INTO $tab VALUES (";
-		
-		$f = true;
-		
-		foreach($this as $key => $value){
-			if ($f){
-				$f = false;
-				if(!in_array($key, $this->arraysys)){
-					$req = $req."".$value."";
-				}
-			}else {
-				if(!in_array($key, $this->arraysys)){
-					$req = $req." ,"."'".$value."'";
-					
-				}
-			}
+        /**
+        * Insertion dans la requête des noms de colonnes
+        * Conditions : - le nom de la colonne ne doit pas faire partie des attributs techniques (ce qu'on as noté dans $attributech)
+        *          
+        */
+        if($this->autoincrement){ // si la clé primaire est en auto-incrément, 
+            $this->arraysys []=$this->primary; // ALORS on l'ajoute dans le tableau des attributs techiniques, comme ça , elle ne sera pas ajoutée dans la requête
+        }
+
+        foreach($this as $nomColonne=>$valeurColonne){ // Pour chaque ligne dans le tableau
+			if (!in_array($nomColonne, $this->arraysys )){ // Si les lignes du nom de la colonne et les attributs techniques ne sont pas dans le tableau
+                $proprietes=$proprietes. "$nomColonne ," ;   // pour que toutes les propriétés soit mises côtes à côtes séparées par des virgules                          
+                $valeurs=$valeurs." '$valeurColonne' ," ;    // pour que toutes les valeurs soit mises côtes à côtes séparées par des virgules
+            }
+        
 		}
+        echo "Propriétés : $proprietes<br/>";
+        echo "Valeurs : $valeurs <br/> <br/>";
+        $proprietes = substr($proprietes, 0, -1);
+        $valeurs = substr($valeurs, 0, -1);
 		
-		$req = $req. ")";
+        $sql="INSERT INTO {$this->tab} ($proprietes) VALUES ($valeurs)";
+        echo "<br/> Création de la ligne <br/> " . "Requête : " . $sql;
+        
+        $bdd= $this->connect();
+        $bdd->query($sql);
+        $bdd = null;
 		
-		
-		$query = $this->pdo->prepare($req);
-		$res = $query->execute();
-		
-		print_r($req);
 	}
 	
 
@@ -136,8 +144,9 @@ abstract class model {
     */
 	public function update(){
 		$this->connect();
+		$primary = $this->primary;
 		$tab = $this->tab;
-		
+		$id = $this->$primary;
 		$req = "UPDATE $tab SET ";
 		
 		$f = true;
@@ -155,7 +164,7 @@ abstract class model {
 			}
 		}
 		
-		$req = $req. "where {$this->primary} = {$this->id}";
+		$req = $req. "where {$this->primary} = {$id}";
 		echo $req;
 		
 		$query = $this->pdo->prepare($req);
@@ -173,8 +182,10 @@ abstract class model {
 	public function delete(){
 		$this->connect();
 		$tab = $this->tab;
-		
-		$req = "DELETE FROM $tab WHERE {$this->primary} = '{$this->id}'";
+		$primary = $this->primary;
+		$id = $this->$primary;
+
+		$req = "DELETE FROM $tab WHERE {$this->primary} = '{$id}'";
 		echo $req;
 		$query = $this->pdo->prepare($req);
 		$res = $query->execute();

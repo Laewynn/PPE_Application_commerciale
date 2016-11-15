@@ -15,13 +15,15 @@
 	*/
 require_once("classeMere.php");
 class Produit extends model{
-	private $idproduit;
-	private $nomproduit;
-	private $descriptionproduit;
-	private $prixunitaireht;
-	private $tva;
-	private $qteenstock;
-	private $image;
+	protected $idproduit;
+	protected $nomproduit;
+	protected $description;
+	protected $prixunitaireht;
+	protected $tva;
+	protected $qteenstock;
+	protected $idcategorie;
+	protected $image;
+
 
 	
 	/**
@@ -31,13 +33,18 @@ class Produit extends model{
 	* @date 11/10/16
 	*/
 	function __construct(){
+		parent::__construct('produit', 'idproduit', true); // savoir si le nom de la table est auto-incrémenté
+		$this->tab = 'produit';
+		$this->primary = 'idproduit';
 		$this->idproduit='';
 		$this->nomproduit='';
-		$this->descriptionproduit='';
+		$this->description='';
 		$this->prixunitaireht='';
 		$this->tva='';
 		$this->qteenstock='';
+		$this->idcategorie='';
 		$this->image='';
+		
 	}
 
 
@@ -95,8 +102,8 @@ class Produit extends model{
 	* @author MARCHAND Laëtitia
 	* @date 11/10/16
 	*/
-	function getdescriptionproduit(){
-		return $this->descriptionproduit;
+	function getdescription(){
+		return $this->description;
 	}
 
 
@@ -107,8 +114,8 @@ class Produit extends model{
 	* @author MARCHAND Laëtitia
 	* @date 11/10/16
 	*/
-	function setdescriptionproduit($descriptionproduit){
-		$this->descriptionproduit=$descriptionproduit;
+	function setdescription($description){
+		$this->description=$description;
 	}
 
 
@@ -180,6 +187,30 @@ class Produit extends model{
 	function setqteenstock($qteenstock){
 		$this->qteenstock=$qteenstock;
 	}
+	
+	/**
+	* Fonction qui sert à donner la valeur de la catégorie
+	* @return $idcategorie = l'id du produit
+	*
+	* @author MARCHAND Laëtitia
+	* @date 15/11/16
+	*/
+	function getidcategorie(){
+		return $this->idcategorie;
+	}
+
+
+	/**
+	* Fonction qui sert à modifier la valeur de l'id de la catégorie
+	* @param $idcategorie = le nouvel id de la catégorie
+	*
+	* @author MARCHAND Laëtitia
+	* @date 15/11/16
+	*/
+	function setidcategorie($idcategorie){
+		$this->idcategorie=$idcategorie;
+	}
+	
 
 	/**
 	* Fonction qui sert à donner la valeur de l'image
@@ -203,6 +234,9 @@ class Produit extends model{
 	function setimage($image){
 		$this->image=$image;
 	}
+
+
+	
 }
 
 ?>
