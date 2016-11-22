@@ -17,11 +17,11 @@
 */
 require_once("classeMere.php");
 public class Ligne_Commande extends model{
-	private $numerolignecommande;
-	private $qtecommandee;
-	private $prixunitaireht;
-	private $tva;
-	private $idcommande;
+	protected $numerolignecommande;
+	protected $qtecommandee;
+	protected $prixunitaireht;
+	protected $tva;
+	protected $idcommande;
 
 
 	/**
@@ -31,10 +31,12 @@ public class Ligne_Commande extends model{
 	* @date 11/10/16
 	*/
 	function __construct(){
+		parent::__construct('Ligne_Commande', 'numerolignecommande', true); // savoir si le nom de la table est auto-incrémenté
 		$this->numerolignecommande='';
 		$this->qtecommandee='';
 		$this->prixunitaireht='';
 		$this->tva='';
+		$this->idcommande='';
 	}
 
 

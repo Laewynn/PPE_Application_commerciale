@@ -34,6 +34,7 @@ class Client extends model {
     * @date 04/10/16
     */
 	function __construct() {
+    parent::__construct('client', 'idclient', true); // savoir si le nom de la table est auto-incrémenté
 		$this->idclient='';
 		$this->nomclient='';
 		$this->prenomclient='';

@@ -22,7 +22,7 @@ class Controller {
 	}
 
 
-	public function set($data){// recupère les donnes
+	public function set($data){// recupère les données
 		$this->vars = array_merge($this->vars, $data);
 	}
 

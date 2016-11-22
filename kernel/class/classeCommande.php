@@ -15,13 +15,13 @@
  */
 require_once("classeMere.php");
 class Commande extends model{
-	private $idcommande;
-	private $datecommande;
-	private $datelivraison;
-	private $adresselivraison;
-	private $cplivraison;
-	private $villelivraison;
-	private $fraisdeport;
+	protected $idcommande;
+	protected $datecommande;
+	protected $datelivraison;
+	protected $adresselivraison;
+	protected $cplivraison;
+	protected $villelivraison;
+	protected $fraisdeport;
  
 	/**
 	* Fonction qui sert à déclarer le constructeur de la classe Commande
@@ -30,6 +30,7 @@ class Commande extends model{
 	* @date 04/10/16
 	*/
 	function __construct() {
+    parent::__construct('commande', 'idcommande', true); // savoir si le nom de la table est auto-incrémenté
 		$this->idcommande='';
 		$this->datecommande='';
 		$this->datelivraison='';
@@ -46,7 +47,7 @@ class Commande extends model{
 	* @author MARCHAND Laëtitia
 	* @date 04/10/16
 	*/
-	function getIDClient(){
+	function getidcommande(){
   		return $this->$idcommande;
   	}
 	
@@ -58,7 +59,7 @@ class Commande extends model{
 	* @author ¨MARCHAND Laëtitia 
 	* @date 04/10/16
 	*/
-  	function setIDClient($id){
+  	function setidcommande($id){
   		$this->idcommande=$id;
   	}
 	

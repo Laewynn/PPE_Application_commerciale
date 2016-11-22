@@ -26,6 +26,7 @@
 		* @date 11/10/16
 		*/
 		function __construct(){
+			parent::__construct('categorie', 'idpcategorie', true); // savoir si le nom de la table est auto-incrémenté
 			$this->idcategorie="";
 			$this->libellecategorie="";
 			$this->primary="idcategorie";

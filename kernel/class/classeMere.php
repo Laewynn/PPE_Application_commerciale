@@ -25,6 +25,26 @@ abstract class model {
 	protected $autoincrement;
 	protected $attributech;
 
+	/**
+	* doBelongsToAssoc - La fonction doBelongsToAssoc permet d'associer, pour chaque clé etrangère ($fk), la valeur de la clé étrangère dans une variable $id 
+	* pour ensuite faire un read sur la table de la clef étrangère permettant ainsi de lister les valeurs de la clef étrangère d'une table
+	* 		
+	* La fonction est privée car ne doit être vue que par la classe mère elle même
+	* Cette fonction est appelée par la classe mère elle même grâce à la fonction read()
+	*
+	* @Cette fonction est associée à la fonction read($id) de la classe model
+	*
+	* @author MARCHAND Laëtitia et BOISSON Gwendoline
+	* @date 22/11/2016
+	*/
+	private function doBelongsToAssoc(){
+		foreach($this->fk as $cle=>$valeur){
+			$id = $this->$valeur;
+			$this->$valeur = new $cle();
+			$this->$valeur->read($id);
+		}
+	}
+
 
 	/**
 	* Fonction qui sert à déclarer le constructeur
