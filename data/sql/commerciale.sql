@@ -23,6 +23,7 @@ CREATE TABLE COMMANDE (
 	DateLivraison date,
 	AdresseLivraison varchar(100),
 	CPLivraison varchar (100),
+	VilleLivraison varchar(100),
 	FraisDePort varchar(100),
 	IDClient int,
 	CONSTRAINT pk_commande PRIMARY KEY (IDCommande),

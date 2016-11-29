@@ -107,8 +107,12 @@ abstract class model {
 
         foreach($this as $nomColonne=>$valeurColonne){ // Pour chaque ligne dans le tableau
 			if (!in_array($nomColonne, $this->arraysys )){ // Si les lignes du nom de la colonne et les attributs techniques ne sont pas dans le tableau
-                $proprietes=$proprietes. "$nomColonne ," ;   // pour que toutes les propriétés soit mises côtes à côtes séparées par des virgules                          
-                $valeurs=$valeurs." '$valeurColonne' ," ;    // pour que toutes les valeurs soit mises côtes à côtes séparées par des virgules
+			$proprietes=$proprietes. "$nomColonne ," ;   // pour que toutes les propriétés soit mises côtes à côtes séparées par des virgules   
+				if ($valeurColonne != null){                       
+                	$valeurs=$valeurs." '$valeurColonne' ," ;    // pour que toutes les valeurs soit mises côtes à côtes séparées par des virgules
+            	}else{
+            		$valeurs=$valeurs."NULL," ;    // pour que toutes les valeurs soit mises côtes à côtes séparées par des virgules
+            	}
             }
         
 		}
@@ -118,6 +122,7 @@ abstract class model {
         $valeurs = substr($valeurs, 0, -1);
 		
         $sql="INSERT INTO {$this->tab} ($proprietes) VALUES ($valeurs)";
+
         echo "<br/> Création de la ligne <br/> " . "Requête : " . $sql;
         
         $bdd= $this->connect();

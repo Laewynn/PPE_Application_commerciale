@@ -21,13 +21,13 @@ require('Controller.php');
 		}
 
 		public function create() {
-			$this->commande->setidcommande(1);
-			$this->commande->setDateCommande(date('YYYY-MM-DD'));
-			$this->commande->setDateLivraison(null);
-			$this->commande->setAdresseLivraison($_POST['adresseLivraison']);
+			$this->commande->setDateCommande(date('Y-m-d'));
+			$this->commande->getDateLivraison();
+			$this->commande->setAdresseLivraison($_POST['adresselivraison']);
 			$this->commande->setCPLivraison($_POST['cplivraison']);
 			$this->commande->setVilleLivraison($_POST['villelivraison']);
 			$this->commande->setFraisDePort('0.5');
+			$this->commande->setidclient(1);
 			$this->commande->create();
 			$this->render('create');
 		

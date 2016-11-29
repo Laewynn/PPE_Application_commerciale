@@ -22,6 +22,7 @@ class Commande extends model{
 	protected $cplivraison;
 	protected $villelivraison;
 	protected $fraisdeport;
+  protected $idclient;
  
 	/**
 	* Fonction qui sert à déclarer le constructeur de la classe Commande
@@ -33,11 +34,12 @@ class Commande extends model{
     parent::__construct('commande', 'idcommande', true); // savoir si le nom de la table est auto-incrémenté
 		$this->idcommande='';
 		$this->datecommande='';
-		$this->datelivraison='';
+		$this->datelivraison=NULL;
 		$this->adresselivraison='';
 		$this->cplivraison='';
 		$this->villelivraison='';
 		$this->fraisdeport='';
+    $this->idclient='';
 	}
     
 	/**
@@ -48,7 +50,7 @@ class Commande extends model{
 	* @date 04/10/16
 	*/
 	function getidcommande(){
-  		return $this->$idcommande;
+  		return $this->idcommande;
   	}
 	
 
@@ -56,7 +58,7 @@ class Commande extends model{
 	* Fonction qui sert à modifier la valeur de l'id de la commande
 	* @param $id = le nouvel id de la commande
 	*
-	* @author ¨MARCHAND Laëtitia 
+	* @author MARCHAND Laëtitia 
 	* @date 04/10/16
 	*/
   	function setidcommande($id){
@@ -72,7 +74,7 @@ class Commande extends model{
 	* @date 04/10/16
 	*/
   	function getDateCommande(){
-  		return $this->$datecommande;
+  		return $this->datecommande;
   	}
 
 
@@ -80,7 +82,7 @@ class Commande extends model{
     * Fonction qui sert à modifier la valeur de la date de la commande
     * @param $DateC = la date de la commande
     *
-    * @author ¨MARCHAND Laëtitia 
+    * @author MARCHAND Laëtitia 
     * @date 04/10/16
     */
   	function setDateCommande($DateC){
@@ -95,18 +97,18 @@ class Commande extends model{
     * @date 04/10/16
     */
   	function getDateLivraison(){
-  		return $this->$datelivraison;
+  		return $this->datelivraison;
   	}
 
   	/**
     * Fonction qui sert à modifier la valeur de la date de la livraison pour la commande
     * @param $DateL = la date de la livraison pour la commande
     *
-    * @author ¨MARCHAND Laëtitia 
+    * @author MARCHAND Laëtitia 
     * @date 04/10/16
     */
   	function setDateLivraison($DateL){
-  		 $this->$datelivraison=$DateL;
+  		 $this->datelivraison=$DateL;
   	}
 	
 
@@ -119,7 +121,7 @@ class Commande extends model{
     * @date 04/10/16
     */
   	function getAdresseLivraison(){
-  		return $this->$adresselivraison;
+  		return $this->adresselivraison;
   	}
 
 
@@ -127,11 +129,11 @@ class Commande extends model{
     * Fonction qui sert à modifier la valeur de l'adresse de la livraison pour la commande
     * @param $adressel = l'adresse de la livraison pour la commande
     *
-    * @author ¨MARCHAND Laëtitia 
+    * @author MARCHAND Laëtitia 
     * @date 04/10/16
     */
   	function setAdresseLivraison($AdresseL){
-  		$this->$adresselivraison=$AdresseL;
+  		$this->adresselivraison=$AdresseL;
   	}
 	
 
@@ -143,14 +145,14 @@ class Commande extends model{
     * @date 04/10/16
     */
   	function getCPLivraison(){
-  		return $this->$cplivraison;
+  		return $this->cplivraison;
   	}
 	
   	/**
     * Fonction qui sert à modifier la valeur du code postal de la livraison pour la commande
     * @param $cpl = code postal de la livraison pour la commande
     *
-    * @author ¨MARCHAND Laëtitia 
+    * @author MARCHAND Laëtitia 
     * @date 04/10/16
     */
     function setCPLivraison($CPL){
@@ -174,7 +176,7 @@ class Commande extends model{
     * Fonction qui sert à modifier la valeur de la ville de la livraison pour la commande
     * @param $villelr = ville de la livraison pour la commande
     *
-    * @author ¨MARCHAND Laëtitia 
+    * @author MARCHAND Laëtitia 
     * @date 04/10/16
     */
 	function setVilleLivraison($VilleL){
@@ -199,10 +201,34 @@ class Commande extends model{
     * Fonction qui sert à modifier la valeur des frais de port de la livraison pour la commande
     * @param $fraisdp = frais de port de la livraison pour la commande
     *
-    * @author ¨MARCHAND Laëtitia 
+    * @author MARCHAND Laëtitia 
     * @date 04/10/16
     */
 	function setFraisDePort($FraisDP){
 	        $this->fraisdeport=$FraisDP;
 	 }
+
+
+    /**
+  * Fonction qui sert à donner la valeur de l'id du client
+  * @return $idclient= l'id du client
+  *
+  * @author MARCHAND Laëtitia
+  * @date 29/11/16
+  */
+  function getidclient(){
+      return $this->$idclient;
+    }
+  
+
+  /**
+  * Fonction qui sert à modifier la valeur de l'id du client
+  * @param $id = le nouvel id du client
+  *
+  * @author MARCHAND Laëtitia 
+  * @date 29/11/16
+  */
+    function setidclient($id){
+      $this->idclient=$id;
+    }
 }
